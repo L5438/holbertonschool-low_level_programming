@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stdarg.h>
 #include "variadic_functions.h"
 
 /**
@@ -10,18 +8,17 @@
 
 int sum_them_all(const unsigned int n, ...)
 {
+	int old;
+	int new;
+	unsigned int x;
 	va_list args;
 
 	va_start(args, n);
 
 	if (n == 0)
 	{
-		return (NULL);
+		return (0);
 	}
-
-	int old;
-	int new;
-	int x;
 
 	old = 0;
 	new = 0;
@@ -31,6 +28,6 @@ int sum_them_all(const unsigned int n, ...)
 		old = va_arg(args, int);
 		new = old + new;
 	}
-}
-return (ttl);
+	va_end(args);
+	return (new);
 }
